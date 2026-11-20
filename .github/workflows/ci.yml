@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Restore dependencies
+        run: dotnet restore "E-commerce System.csproj"
+
+      - name: Build
+        run: dotnet build "E-commerce System.csproj" --no-restore --configuration Release
+
+      - name: Test
+        run: dotnet test "E-commerce System.csproj" --no-build --configuration Release --verbosity minimal
