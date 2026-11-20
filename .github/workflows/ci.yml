@@ -25,10 +25,10 @@ jobs:
           dotnet-version: 8.0.x
 
       - name: Restore dependencies
-        run: dotnet restore "E-commerce System.csproj"
+        run: dotnet restore "tests/E-commerce System.Tests/E-commerce System.Tests.csproj"
 
       - name: Build
-        run: dotnet build "E-commerce System.csproj" --no-restore --configuration Release
+        run: dotnet build "tests/E-commerce System.Tests/E-commerce System.Tests.csproj" --no-restore --configuration Release
 
       - name: Test
-        run: dotnet test "E-commerce System.csproj" --no-build --configuration Release --verbosity minimal
+        run: dotnet test "tests/E-commerce System.Tests/E-commerce System.Tests.csproj" --no-build --configuration Release --verbosity minimal
