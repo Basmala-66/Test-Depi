@@ -13,7 +13,7 @@
         public int PageSize
         {
             get => _pageSize;
-            set => _pageSize =(value > maxPageSize) ? maxPageSize : PageSize;
+            set => _pageSize = value > maxPageSize ? maxPageSize : value;
         }
 
         public IEnumerable<T>? Data { get; set; }
